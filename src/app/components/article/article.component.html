@@ -1,0 +1,11 @@
+<ion-card>
+  <ion-card-subtitle class="ion-margin">
+    <span class="text-primary">{{i}}</span>
+    <span  class="aricle-source-name">{{item.source.name}}</span>
+  </ion-card-subtitle>
+  <ion-card-title  class="ion-padding-horizontal ion-margin-bottom">{{item.title}}</ion-card-title>
+  <ion-img *ngIf="item.urlToImage"[src]="item.urlToImage"></ion-img>
+  <ion-card-content *ngIf="item.description">
+    <p>{{item.description}}</p>
+  </ion-card-content>
+</ion-card>
