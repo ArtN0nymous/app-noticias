@@ -1,10 +1,19 @@
 <ion-card>
   <ion-card-subtitle class="ion-margin">
-    <span class="text-primary">{{i}}</span>
-    <span  class="aricle-source-name">{{item.source.name}}</span>
+    <ion-row (click)="openArticle()">
+      <ion-col>
+        <span class="text-primary">{{i}}</span>
+        <span  class="aricle-source-name">{{item.source.name}}</span>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="onClick()">
+          <ion-icon slot="icon-only" name="open-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
   </ion-card-subtitle>
   <ion-card-title  class="ion-padding-horizontal ion-margin-bottom">{{item.title}}</ion-card-title>
-  <ion-img *ngIf="item.urlToImage"[src]="item.urlToImage"></ion-img>
+  <ion-img *ngIf="item.urlToImage"[src]="item.urlToImage" (click)="openArticle()"></ion-img>
   <ion-card-content *ngIf="item.description">
     <p>{{item.description}}</p>
   </ion-card-content>
