@@ -3,6 +3,7 @@ import { Article } from '../../interfaces/index';
 import { Browser } from '@capacitor/browser';
 import { ActionSheetController, Platform } from '@ionic/angular';
 import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-article',
@@ -11,7 +12,7 @@ import { SocialSharing } from '@awesome-cordova-plugins/social-sharing/ngx';
 })
 export class ArticleComponent {
 
-  constructor(private actionSheetCtrl:ActionSheetController,private socialSharing:SocialSharing,private platform:Platform) { }
+  constructor(private actionSheetCtrl:ActionSheetController,private socialSharing:SocialSharing,private platform:Platform,private storage:StorageService) { }
 
   @Input() i!:number;
   @Input() item!:Article;
@@ -54,5 +55,6 @@ export class ArticleComponent {
   }
   onToggleFavorite(){
     console.log('Add favorito');
+    this.storage.saveRemoveArticle(this.item);
   }
 }
