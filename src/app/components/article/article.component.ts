@@ -12,7 +12,12 @@ import { StorageService } from '../../services/storage.service';
 })
 export class ArticleComponent {
 
-  constructor(private actionSheetCtrl:ActionSheetController,private socialSharing:SocialSharing,private platform:Platform,private storage:StorageService) { }
+  constructor(
+    private actionSheetCtrl:ActionSheetController,
+    private socialSharing:SocialSharing,
+    private platform:Platform,
+    private storage:StorageService,
+    ) { }
 
   @Input() i!:number;
   @Input() item!:Article;
@@ -20,10 +25,11 @@ export class ArticleComponent {
     await Browser.open({ url: this.item.url });
   }
   async onOpenMenu(){
+    const isInFavorite = this.storage.articleInFavorites(this.item);
     let buttons=[
       {
-        text:'Favorito',
-        icon:'heart-outline',
+        text:isInFavorite?'Remover':'Favorito',
+        icon:isInFavorite?'heart':'heart-outline',
         handler:()=>this.onToggleFavorite()
       },
       {
