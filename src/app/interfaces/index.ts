@@ -6,17 +6,17 @@ export interface NewsResponse {
 
 export interface Article {
     source:      Source;
-    author?:     string;
+    author:      null | string;
     title:       string;
-    description?:string;
+    description: null | string;
     url:         string;
-    urlToImage?: string;
-    publishedAt: Date;
-    content?:    string;
+    urlToImage:  null | string;
+    publishedAt: Date | string;
+    content:     null | string;
 }
 
 export interface Source {
-    id?:  string;
+    id:   null | string;
     name: string;
 }
 /**DEFINE LAS PROPEIDADES PARA N CANTIDAD DE TIPOS CATEGORIAS */

@@ -44,6 +44,12 @@ export class ArticleComponent {
         icon:'share-outline',
         handler:()=>this.onShare()
       },)
+    }else{
+      buttons.unshift({
+        text:'Compartir',
+        icon:'share-outline',
+        handler:()=>this.onShareWeb()
+      },)
     }
     const actionShett=await this.actionSheetCtrl.create({
       header:'Opciones',
@@ -58,6 +64,17 @@ export class ArticleComponent {
       undefined,
       this.item.url
     );
+  }
+  onShareWeb(){
+    if (navigator.share) {
+      navigator.share({
+        title: this.item.title,
+        text: this.item.source.name,
+        url: this.item.url,
+      })
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error));
+    }
   }
   onToggleFavorite(){
     console.log('Add favorito');
